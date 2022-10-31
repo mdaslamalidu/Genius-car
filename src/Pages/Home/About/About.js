@@ -14,7 +14,7 @@ const About = () => {
           />
         </div>
         <div className="w-1/2">
-          <p className="text-orange-400 font-bold">About Us</p>
+          <p className="text-lg text-orange-400 font-bold">About Us</p>
           <h1 className="text-5xl font-bold mt-2">
             We are qualified
             <br />& experience
