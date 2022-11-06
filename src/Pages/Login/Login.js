@@ -11,7 +11,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-
+    console.log(login);
     login(email, password)
       .then((result) => {
         const user = result.user;
@@ -34,7 +34,7 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 placeholder="email"
                 name="email"
                 className="input input-bordered"
@@ -45,7 +45,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 name="password"
                 className="input input-bordered"
