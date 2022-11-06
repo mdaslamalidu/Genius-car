@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -24,11 +25,17 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const logout = () => {
+    localStorage.removeItem("geniusToken");
+    return signOut(auth);
+  };
+
   const userInfo = {
     user,
     loading,
     createUser,
     login,
+    logout,
   };
 
   useEffect(() => {

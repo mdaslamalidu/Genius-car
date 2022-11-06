@@ -4,24 +4,36 @@ import OrdersCart from "./OrdersCart";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logout();
+        }
+        return res.json();
+      })
       .then((data) => {
         if (data) {
           setOrders(data);
-          console.log(data);
         }
-      });
-  }, [user?.email]);
+      })
+      .catch((err) => console.error(err));
+  }, [user?.email, logout]);
 
   const handleDelete = (id) => {
     // const procced = window.confirm("Are you want to delete the product");
     // if (procced) {
     fetch(`http://localhost:5000/orders/${id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -39,6 +51,7 @@ const Orders = () => {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
       },
       body: JSON.stringify({ status: "Approved" }),
     })
