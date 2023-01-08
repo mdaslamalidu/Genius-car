@@ -10,7 +10,7 @@ const Checkout = () => {
     event.preventDefault();
     const form = event.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
-    const message = form.address.value;
+    const address = form.address.value;
     const phone = form.phone.value;
     const currency = form.currency.value;
     const postcode = form.postcode.value;
@@ -105,7 +105,7 @@ const Checkout = () => {
           name="address"
           placeholder="Your Address"
         ></textarea>
-        <input className="btn" type="submit" value="Place Your Order" />
+        <input className="btn w-24" type="submit" value="Pay" />
       </form>
     </div>
   );
