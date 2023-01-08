@@ -7,11 +7,14 @@ const Orders = () => {
   const { user, logout } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
-      },
-    })
+    fetch(
+      `https://genius-car-server-virid-three.vercel.app/orders?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logout();
@@ -29,7 +32,7 @@ const Orders = () => {
   const handleDelete = (id) => {
     // const procced = window.confirm("Are you want to delete the product");
     // if (procced) {
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://genius-car-server-virid-three.vercel.app/orders/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("geniusToken")}`,
@@ -43,11 +46,11 @@ const Orders = () => {
           setOrders(filter);
           alert("delete successfully");
         }
-      });
+    });
   };
 
   const handleUpdate = (id) => {
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://genius-car-server-virid-three.vercel.app/orders/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,9 @@ const OrdersCart = ({ order, handleDelete, handleUpdate }) => {
   const [orderSurvices, setOrderSurvices] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${service}`)
+    fetch(
+      `https://genius-car-server-virid-three.vercel.app/services/${service}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderSurvices(data));
   }, [service]);

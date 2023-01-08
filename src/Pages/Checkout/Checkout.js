@@ -26,7 +26,7 @@ const Checkout = () => {
 
     console.log(order);
     console.log("clicked");
-    fetch("http://localhost:5000/orders", {
+    fetch("https://genius-car-server-virid-three.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,11 +78,17 @@ const Checkout = () => {
             className="input input-bordered w-full "
             defaultValue={user?.email}
           />
+          <input
+            type="text"
+            name="postcode"
+            placeholder="Your Postcode"
+            className="input input-bordered w-full "
+          />
         </div>
         <textarea
           className="textarea textarea-bordered w-full my-3"
           name="message"
-          placeholder="Your Message"
+          placeholder="Your Address"
         ></textarea>
         <input className="btn" type="submit" value="Place Your Order" />
       </form>
