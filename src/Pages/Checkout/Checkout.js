@@ -84,6 +84,13 @@ const Checkout = () => {
             placeholder="Your Postcode"
             className="input input-bordered w-full "
           />
+          <select defaultValue="BDT" className="select select-accent w-full ">
+            <option disabled selected>
+              Select Currency.
+            </option>
+            <option value="BDT">BDT</option>
+            <option value="USD">USD</option>
+          </select>
         </div>
         <textarea
           className="textarea textarea-bordered w-full my-3"
