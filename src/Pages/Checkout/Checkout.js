@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const { title, price, _id } = useLoaderData();
@@ -30,7 +31,7 @@ const Checkout = () => {
 
     console.log(order);
     console.log("clicked");
-    fetch("https://genius-car-server-virid-three.vercel.app/orders", {
+    fetch("http://localhost:5000/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,11 +41,7 @@ const Checkout = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          alert("data added");
-          form.reset();
-        }
+        window.location.replace(data.url);
       })
       .catch((err) => {
         console.log(err);
