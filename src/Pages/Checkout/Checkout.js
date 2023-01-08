@@ -10,18 +10,22 @@ const Checkout = () => {
     event.preventDefault();
     const form = event.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
-    const message = form.message.value;
+    const message = form.address.value;
     const phone = form.phone.value;
+    const currency = form.currency.value;
+    const postcode = form.postcode.value;
     const email = user?.email || "notregistered";
 
     const order = {
       service: _id,
       serviceName: title,
       price,
-      message,
+      address,
       email,
       customer: name,
       phone,
+      currency,
+      postcode,
     };
 
     console.log(order);
@@ -84,7 +88,11 @@ const Checkout = () => {
             placeholder="Your Postcode"
             className="input input-bordered w-full "
           />
-          <select defaultValue="BDT" className="select select-accent w-full ">
+          <select
+            name="currency"
+            defaultValue="BDT"
+            className="select select-accent w-full "
+          >
             <option disabled selected>
               Select Currency.
             </option>
@@ -94,7 +102,7 @@ const Checkout = () => {
         </div>
         <textarea
           className="textarea textarea-bordered w-full my-3"
-          name="message"
+          name="address"
           placeholder="Your Address"
         ></textarea>
         <input className="btn" type="submit" value="Place Your Order" />
