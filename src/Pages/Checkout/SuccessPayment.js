@@ -17,6 +17,9 @@ const SuccessPayment = () => {
         setOrder(data);
       });
   }, [transactionId]);
+  if (!order?._id) {
+    return <div>Order Not Found</div>;
+  }
   return (
     <div>
       <h2>Successfully paid Congrats!!</h2>
