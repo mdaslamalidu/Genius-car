@@ -41,7 +41,7 @@ const SuccessPayment = () => {
         </table>
 
         <button
-          className="btn btn-primary ml-auto mt-5 block"
+          className="btn btn-primary ml-auto mt-5 block print:hidden"
           onClick={() => window.print()}
         >
           Print
